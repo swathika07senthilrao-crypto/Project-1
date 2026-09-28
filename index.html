@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <title>Hello, World — A Little Spark</title>
+  <style>
+    :root { color-scheme: dark; --ink:#f4f2ff; --muted:#b8b6d0; --glow:#b7a0ff; }
+    * { box-sizing:border-box; }
+    body {
+      min-height:100vh; margin:0; display:grid; place-items:center; overflow:hidden;
+      color:var(--ink); font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(ellipse at 50% 0%, #29204d 0%, #14172d 42%, #090d19 100%);
+    }
+    body::before, body::after { content:""; position:fixed; width:38rem; height:38rem; border-radius:50%; filter:blur(100px); opacity:.2; pointer-events:none; }
+    body::before { background:#7654e8; top:-25rem; left:-14rem; }
+    body::after { background:#26b9c9; right:-23rem; bottom:-28rem; }
+    .stars { position:fixed; inset:0; pointer-events:none; background-image:radial-gradient(1px 1px at 15% 25%,#fff 98%,transparent),radial-gradient(1px 1px at 77% 19%,#fff 98%,transparent),radial-gradient(1.5px 1.5px at 68% 73%,#fff 98%,transparent),radial-gradient(1px 1px at 31% 81%,#fff 98%,transparent),radial-gradient(1px 1px at 91% 54%,#fff 98%,transparent); opacity:.55; }
+    main { position:relative; width:min(90vw,700px); padding:clamp(2.5rem,8vw,5.5rem) 2rem; text-align:center; }
+    .orb { width:76px; height:76px; margin:0 auto 2.25rem; display:grid; place-items:center; border:1px solid #ffffff35; border-radius:24px; background:linear-gradient(145deg,#ffffff20,#ffffff05); box-shadow:0 0 60px #9a77ff30,inset 0 1px #ffffff40; transform:rotate(-8deg); }
+    .orb span { font-size:2rem; transform:rotate(8deg); filter:drop-shadow(0 0 12px #d8caff); }
+    .eyebrow { margin:0 0 1rem; color:#c7baff; font-size:.72rem; font-weight:700; letter-spacing:.22em; text-transform:uppercase; }
+    h1 { margin:0; font-size:clamp(3.4rem,10vw,6.7rem); line-height:.98; letter-spacing:-.075em; font-weight:760; }
+    h1 span { display:block; background:linear-gradient(100deg,#f9f6ff 15%,#c4b3ff 56%,#7fe8e2 100%); color:transparent; background-clip:text; -webkit-background-clip:text; }
+    .intro { max-width:440px; margin:1.5rem auto 2.2rem; color:var(--muted); font-size:clamp(1rem,2.5vw,1.12rem); line-height:1.75; }
+    button { display:inline-flex; align-items:center; gap:.65rem; padding:.9rem 1.25rem; border:1px solid #ffffff38; border-radius:999px; color:#fff; font:600 .9rem inherit; font-size:.9rem; font-weight:650; background:#ffffff12; box-shadow:0 8px 32px #0003,inset 0 1px #ffffff25; cursor:pointer; transition:transform .2s,background .2s,border-color .2s; }
+    button:hover { transform:translateY(-3px); background:#ffffff20; border-color:#ffffff70; }
+    button:focus-visible { outline:2px solid #b7a0ff; outline-offset:4px; }
+    button span { color:#b7a0ff; font-size:1.1rem; }
+    #message { min-height:1.5em; margin:1rem 0 0; color:#a5ece5; font-size:.9rem; }
+    footer { position:fixed; bottom:1.5rem; color:#777b96; font-size:.72rem; letter-spacing:.12em; text-transform:uppercase; }
+    @media (prefers-reduced-motion: no-preference) { .orb { animation:float 5s ease-in-out infinite; } @keyframes float { 50% { transform:translateY(-8px) rotate(-5deg); } } }
+  </style>
+</head>
+<body>
+  <div class="stars" aria-hidden="true"></div>
+  <main>
+    <div class="orb" aria-hidden="true"><span>✦</span></div>
+    <p class="eyebrow">A tiny beginning</p>
+    <h1>Hello,<span>World.</span></h1>
+    <p class="intro">Every great idea starts somewhere. Here’s to the first line, the blank canvas, and everything you’ll make next.</p>
+    <button id="helloButton" type="button"><span aria-hidden="true">✧</span> Say hello</button>
+    <p id="message" aria-live="polite"></p>
+  </main>
+  <footer>Made for what comes next</footer>
+  <script>
+    const button = document.querySelector('#helloButton');
+    const message = document.querySelector('#message');
+    button.addEventListener('click', () => {
+      message.textContent = 'Hello right back ✨';
+      button.innerHTML = '<span aria-hidden="true">✓</span> Hello sent';
+    });
+  </script>
+</body>
+</html>
